@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import toast, { Toaster } from 'react-hot-toast';
 import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
@@ -14,6 +15,15 @@ const getLocalItems = () => {
 }
 
 function App() {
+  const notify = () => toast('Note trashed',
+  {
+    style: {
+      borderRadius: '6px',
+      background: '#333',
+      color: '#fff',
+    },
+  });
+
   const [notes, setNotes] = useState(getLocalItems());
 
   function addNote(newNote) {
@@ -23,6 +33,7 @@ function App() {
   }
 
   function deleteNote(id) {
+    notify();
     setNotes(prevNotes => {
       return prevNotes.filter((noteItem, index) => {
         return index !== id;
@@ -36,6 +47,10 @@ function App() {
 
   return (
     <div>
+      <Toaster 
+       position="bottom-left"
+       reverseOrder={false}
+       />
       <Header />
       <CreateArea onAdd={addNote} />
       {notes.map((noteItem, index) => {
