@@ -114,3 +114,12 @@ form.create-note button {
   margin-top: -40px;
   padding-right: 30px;
 }
+.count {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: -10px;
+  align-items: center;
+  justify-content: center;
+  font-size: large;
+  font-style: italic;
+}

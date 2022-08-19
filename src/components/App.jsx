@@ -4,6 +4,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
 import CreateArea from "./CreateArea";
+import Count from "./Count";
 
 const getLocalItems = () => {
   let list = localStorage.getItem('lists');
@@ -52,6 +53,7 @@ function App() {
        reverseOrder={false}
        />
       <Header />
+      <Count count={notes.length === 0 ? "Empty" : `Showing ${notes.length} Notes in Database`}/>
       <CreateArea onAdd={addNote} />
       {notes.map((noteItem, index) => {
         return (
